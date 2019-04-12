@@ -1,0 +1,21 @@
+{
+    "name": "eric/CourseMatch",
+    "authors": [
+      {
+        "name": "Eric",
+        "email": "eric19981224@gmail.com"
+      }
+    ],
+
+    "require": {
+      "monolog/monolog": "^1.23",
+        "wixel/gump": "^1.5",
+        "fightbulc/moment": "^1.29"
+    },
+
+    "autoload": {
+      "classmap": [
+        "libraries"
+      ]
+    }
+}

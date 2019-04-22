@@ -28,6 +28,12 @@ switch($route->getParameter(1)){
       include('view/footer/default.php');
     break;
 
+    case "block":
+      include('view/header/login.php');
+      include('view/body/block.php');
+      include('view/footer/default.php');
+    break;
+
     default:
       include('view/header/default.php'); // 載入共用的頁首
       include('view/body/main.php');

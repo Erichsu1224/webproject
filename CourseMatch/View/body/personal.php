@@ -21,9 +21,8 @@
 </div>
 
 <div>
-  <form action="" method="get">
-  　查查誰跟你修同一堂課吧：<input type="text" name="course">
-  　<input type="submit" value="GO!">
+  <form action='block' method="">
+  　<input type=submit>查查誰跟你修同一堂課吧</input>
   </form>
 
   <?php

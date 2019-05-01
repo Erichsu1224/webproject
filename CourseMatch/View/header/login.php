@@ -4,10 +4,10 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title><?php if(isset($title)){ echo $title; }?></title>
+  <title>CourseMatch</title>
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body topmargin="0" leftmargin="0">
+<body topmargin="0" leftmargin="0" style="background-color:#F2FFF2;">
   <div class= "header" style="width:100%; height:80px; background-color:green;">
     <div class= "title" style="font-size:50px; height:200px;float:left;">
         <a href= "index.php" style=" text-decoration:none; color:white; "><b style="margin-left: 20px;">CourseMatch</b></a>
@@ -21,7 +21,7 @@
       exit();
     }
 
-    $con = mysqli_connect("localhost","root","","coursematch");
+    $con = mysqli_connect("140.136.150.68:33066","root","880323","eric");
 
     if (!$con)
     {

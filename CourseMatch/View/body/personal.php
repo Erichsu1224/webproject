@@ -1,20 +1,20 @@
 <?php
-    $con = mysqli_connect("140.136.150.68:33066","root","880323","eric");
+    $con = mysqli_connect("140.136.150.68:33066","root","880323","User");
     if (!$con)
     {
       die('Could not connect: ' . mysql_error());
     }
     mysqli_query($con,"SET CHARACTER SET UTF8");
  ?>
-<div class=personalfile style="width:300px; height:100%;border-right:3px solid black; margin-bottom:20px; margin-left:-20%; float:left;">
+<div class=personalfile style="width:275px; height:100%;border-right:3px solid black; margin-bottom:20px; margin-left:-300px; float:left;">
   <div name=photo style="margin-top:20px;">
-    <img src='logo-person-png.png'>
+    <img src='logo-person-png.png' style="size:20px;">
   </div>
   <div name=info>
     <table border=1>
       <?php
         $username = $_SESSION['username'];
-        $sql="SELECT `username`,`password`,`email` from `User` Where `username` = '$username'";
+        $sql="SELECT `username`,`password`,`email` from `user` Where `username` = '$username'";
         $result=mysqli_query($con, $sql);
         $row=mysqli_fetch_row($result);
 
@@ -27,7 +27,52 @@
   </div>
 </div>
 
-<div style="float:left; margin-top:20px;">
+<div style="float:left; border-right:3px solid black; margin-bottom:20px;">
+  <div style="margin-left:20px; margin-top:20px; margin-right:6a0px">
+    <table border=1 width=600 align="center" width=600px>
+      <tr>
+        <td></td><td>星期一</td><td>星期二</td><td>星期三</td><td>星期四</td><td>星期五</td><td>星期六</td>
+      </tr>
+      <tr>
+        <td>8:10 ~ 9:00</td><td></td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td>9:10 ~ 10:00</td><td></td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td>10:10 ~ 11:00</td><td></td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td>11:10 ~ 12:00</td><td></td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td>午休</td><td></td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td>1:40 ~ 2:30</td><td></td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td>2:40 ~ 3:30</td><td></td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td>3:40 ~ 4:30</td><td></td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td>4:40 ~ 5:30</td><td></td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td>5:40 ~ 6:30</td><td></td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+    </table>
+  </div>
+
+  <div style="margin-top:20px; ">
+    <form method="post" action="">
+      <input type=button name="edit" value="EDIT">
+    </form>
+  </div>
+
+  <!--
   <div>
     <form action="" method="post">
     　&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp輸入你有的課程：<input type="text" name="course" id='course'>
@@ -35,6 +80,7 @@
     </form>
 
     <?php
+    /*
       if($_POST)
       {
         $course = $_POST['course'];
@@ -54,6 +100,7 @@
         $sql="INSERT INTO $course(`name`) VALUES ('$users_name')";
         mysqli_query($con,$sql);
       }
+      */
      ?>
   </div>
 
@@ -63,6 +110,7 @@
     </form>
 
     <?php
+    /*
     if($_POST){
         header("refresh:1; url:block");
     } ?>
@@ -84,6 +132,12 @@
             echo $row[0]."<br>";
         }
       }
+      */
      ?>
   </div>
+  -->
+</div>
+
+<div style="width:250px; height:100%;float:left;">
+  <p>test</p>
 </div>

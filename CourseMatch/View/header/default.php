@@ -10,6 +10,8 @@
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body topmargin="0" leftmargin="0" style="background-color:#F2FFF2;">
+  <div>
   <?php
     require 'View/body/home.php';
   ?>
+  </div>

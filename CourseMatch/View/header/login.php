@@ -21,7 +21,7 @@
       exit();
     }
 
-    $con = mysqli_connect("140.136.150.68:33066","root","880323","eric");
+    $con = mysqli_connect("140.136.150.68:33066","root","880323","User");
 
     if (!$con)
     {
@@ -33,7 +33,7 @@
 
     $users_username = $_SESSION['username'];
 
-    $sql="SELECT `username`, `password`, `studentid`, `email`, `name` FROM `User` WHERE `username`='$users_username'";
+    $sql="SELECT `username`, `password`, `studentid`, `email`, `name` FROM `user` WHERE `username`='$users_username'";
     $result=mysqli_query($con, $sql);
     $users_name=NULL;
 

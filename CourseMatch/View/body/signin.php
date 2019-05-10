@@ -35,19 +35,17 @@
     <?php
       if($_POST){
 
-        $con = mysqli_connect("140.136.150.68:33066","root","880323","eric");
+        $con = mysqli_connect("140.136.150.68:33066","root","880323","User");
 
         if (!$con)
         {
           die('Could not connect: ' . mysql_error());
         }
 
-        mysqli_select_db($con, "User");
-
         $users_username = $_POST['username'];
         $users_password = $_POST['password'];
 
-        $sql="SELECT `username`, `password` FROM `User` WHERE `username`='$users_username'";
+        $sql="SELECT `username`, `password` FROM `user` WHERE `username`='$users_username'";
         $result=mysqli_query($con, $sql);
         $db_username=NULL;
         $db_password=NULL;

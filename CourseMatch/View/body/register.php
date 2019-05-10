@@ -50,7 +50,7 @@
 			 <?
 					if($_POST)
 					{
-					  $con = mysqli_connect("140.136.150.68:33066","root","880323","eric");
+					  $con = mysqli_connect("140.136.150.68:33066","root","880323","User");
 
 					  if (!$con)
 					  {
@@ -58,7 +58,6 @@
 					  }
 
 						mysqli_query($con,"SET CHARACTER SET UTF8");
-					  mysqli_select_db($con, "User");
 
 						$users_username = $_POST['username'];
 						$users_password = $_POST['password'];
@@ -73,7 +72,12 @@
 						$users_email = mysqli_real_escape_string($con, $users_email);
 						$users_name = mysqli_real_escape_string($con, $users_name);
 
+
+						$sql="CREATE Table $users_name(course varchar(50) Not NULL, date int(11) Not NULL, start_time time Not NULL, end_time time Not NULL)";
+						mysqli_query($con, $sql);
+
 						//test is the account has been asign
+						/*
 						$sql="SELECT `username` FROM `User` WHERE `username`='$users_username'";
 						$result=mysqli_query($con,$sql);
 						if(mysqli_num_rows($result) != 0)
@@ -83,9 +87,9 @@
 							exit;
 						}
 						//end test
+						*/
 
-					  $query = "INSERT INTO `User`(username,password,studentid,email,name) VALUES ('$users_username','$users_password','$users_studentid','$users_email','$users_name')";
-
+					  $query = "INSERT INTO `user`(username,password,studentid,email,name) VALUES ('$users_username','$users_password','$users_studentid','$users_email','$users_name')";
 					  mysqli_query($con,$query);
 					  mysqli_close($con);
 

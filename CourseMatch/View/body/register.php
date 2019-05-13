@@ -93,7 +93,7 @@
 					  mysqli_query($con,$query);
 					  mysqli_close($con);
 
-						header("refresh:1;url=signin");
+						header("refresh;url=signin");
 					}
 
 					?>

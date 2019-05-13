@@ -5,6 +5,13 @@
       die('Could not connect: ' . mysql_error());
     }
     mysqli_query($con,"SET CHARACTER SET UTF8");
+
+    $conn = mysqli_connect("140.136.150.68:33066","root","880323","Course");
+    if (!$conn)
+    {
+      die('Could not connect: ' . mysql_error());
+    }
+    mysqli_query($conn,"SET CHARACTER SET UTF8");
  ?>
 <div class=personalfile style="width:275px; height:100%;border-right:3px solid black; margin-bottom:20px; margin-left:-300px; float:left;">
   <div name=photo style="margin-top:20px;">
@@ -93,6 +100,19 @@
 
           $sql = "INSERT INTO `$name`(`course`, `date`, `start_time`, `end_time`) VALUES('$course', $date, '$start_time', '$end_time')";
           mysqli_query($con, $sql);
+
+          $sql = "SELECT * from `Coursename` WHERE `course`=$course";
+          $result = mysqli_query($conn, $sql);
+          if(mysqli_num_rows($reslut) === 0)
+          {
+            $sql = "INSERT INTO `Coursename`(`course`, `date`, `start_time`, `end_time`) VALUES('$course', $date, '$start_time', '$end_time')";
+            mysqli_query($conn, $sql);
+            $sql = "CREATE Table $course(user_name varchar(15) NOT NULL)";
+            mysqli_query($conn, $sql);
+          }
+
+          $sql = "INSERT INTO `$course`(`user_name`) VALUES('$name')";
+          mysqli_query($conn, $sql);        
         }
         if($_POST['chk'] == "delete")
         {

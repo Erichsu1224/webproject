@@ -67,9 +67,7 @@
   </div>
 
   <div style="margin-top:20px; ">
-    <form method="post" action="">
-      <input type=button name="edit" value="EDIT">
-    </form>
+    <a href="editcourse">修改課表</a>
   </div>
 
   <!--

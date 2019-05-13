@@ -105,4 +105,8 @@
       }
     ?>
   </div>
+
+  <div style="margin-top:150px;">
+    <a href="personal">返回課表</a>
+  </div>
 </div>

@@ -21,12 +21,11 @@
     <table border=1>
       <?php
         $username = $_SESSION['username'];
-        $sql="SELECT `username`,`password`,`email`, `name` from `user` Where `username` = '$username'";
+        $sql="SELECT `username`,`password`,`email`, `name`, `studentid` from `user` Where `username` = '$username'";
         $result=mysqli_query($con, $sql);
         $row=mysqli_fetch_row($result);
         $name = $row[3];
-
-        $output = "<tr><td>username</td><td>".$row[0]."</td></tr><tr><td>password</td><td>"."*********"."</td></tr><tr><td>email</td><td>".$row[2]."</td></tr>";
+        $output = "<tr><td>username</td><td>".$row[0]."</td></tr><tr><td>password</td><td>"."*********"."</td></tr><tr><td>studentid</td><td>".$row[4]."</td></tr><tr><td>email</td><td>".$row[2]."</td></tr>";
 
         echo $output;
 
@@ -112,7 +111,7 @@
           }
 
           $sql = "INSERT INTO `$course`(`user_name`) VALUES('$name')";
-          mysqli_query($conn, $sql);        
+          mysqli_query($conn, $sql);
         }
         if($_POST['chk'] == "delete")
         {

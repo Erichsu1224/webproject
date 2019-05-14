@@ -14,11 +14,12 @@
     <table border=1>
       <?php
         $username = $_SESSION['username'];
-        $sql="SELECT `username`,`password`,`email` from `user` Where `username` = '$username'";
+        $sql="SELECT `username`,`password`,`studentid`,`email`,`name` from `user` Where `username` = '$username'";
         $result=mysqli_query($con, $sql);
         $row=mysqli_fetch_row($result);
+        $name = $row[4];
 
-        $output = "<tr><td>username</td><td>".$row[0]."</td></tr><tr><td>password</td><td>"."*********"."</td></tr><tr><td>email</td><td>".$row[2]."</td></tr>";
+        $output = "<tr><td>username</td><td>".$row[0]."</td></tr><tr><td>password</td><td>"."*********"."</td></tr><tr><td>studentid</td><td>".$row[2]."</td></tr><tr><td>email</td><td>".$row[3]."</td></tr>";
 
         echo $output;
 
@@ -33,6 +34,82 @@
       <tr>
         <td></td><td>星期一</td><td>星期二</td><td>星期三</td><td>星期四</td><td>星期五</td><td>星期六</td>
       </tr>
+      <?php
+        $out = "";
+
+        for($i = 1; $i <= 9; $i++)
+        {
+          $out .= "<tr><td>";
+
+          switch($i)
+          {
+            case 1:
+              $out .= "8:10 ~ 9:00";
+              $s_t = '8:10';
+              break;
+            case 2:
+              $out .= "9:10 ~ 10:00";
+              $s_t = '9:10';
+              break;
+            case 3:
+              $out .= "10:10 ~ 11:00";
+              $s_t = '10:10';
+              break;
+
+            case 4:
+              $out .= "11:10 ~ 12:00";
+              $s_t = '11:10';
+              break;
+
+            case 5:
+              $out .= "13:40 ~ 14:30";
+              $s_t = '13:40';
+              break;
+
+            case 6:
+              $out .= "14:40 ~ 15:30";
+              $s_t = '14:40';
+              break;
+
+            case 7:
+              $out .= "15:40 ~ 16:30";
+              $s_t = '15:40';
+              break;
+
+            case 8:
+              $out .= "16:40 ~ 17:30";
+              $s_t = '16:40';
+              break;
+
+            case 9:
+              $out .= "17:40 ~ 18:30";
+              $s_t = '17:40';
+              break;
+          }
+          $out .= "</td>";
+
+          for($j = 1; $j <= 6; $j++)
+          {
+
+             $sql = "SELECT `course` from `$name` where `date` = $j && (`start_time` <= '$s_t' && `end_time` >= '$s_t')";
+             $out .= "<td>";
+             $result = mysqli_query($con, $sql);
+             if($result)
+             {
+               $row=mysqli_fetch_row($result);
+               $out .= $row[0];
+             }
+
+             $out .= "</td>";
+
+          }
+          $out .= "</tr>";
+        }
+        echo $out;
+       ?>
+
+
+       <!--
       <tr>
         <td>8:10 ~ 9:00</td><td></td><td></td><td></td><td></td><td></td><td></td>
       </tr>
@@ -63,6 +140,7 @@
       <tr>
         <td>5:40 ~ 6:30</td><td></td><td></td><td></td><td></td><td></td><td></td>
       </tr>
+    -->
     </table>
   </div>
 

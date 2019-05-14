@@ -21,7 +21,7 @@
       exit();
     }
 
-    $con = mysqli_connect("140.136.150.68:33066","root","880323","User");
+    $con = mysqli_connect("140.136.150.68:33066","coursematch","","User");
 
     if (!$con)
     {

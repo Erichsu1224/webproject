@@ -1,12 +1,12 @@
 <?php
-    $con = mysqli_connect("140.136.150.68:33066","root","880323","User");
+    $con = mysqli_connect("140.136.150.68:33066","coursematch","","User");
     if (!$con)
     {
       die('Could not connect: ' . mysql_error());
     }
     mysqli_query($con,"SET CHARACTER SET UTF8");
 
-    $conn = mysqli_connect("140.136.150.68:33066","root","880323","Course");
+    $conn = mysqli_connect("140.136.150.68:33066","coursematch","","Course");
     if (!$conn)
     {
       die('Could not connect: ' . mysql_error());

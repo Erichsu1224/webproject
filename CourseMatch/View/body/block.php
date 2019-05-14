@@ -4,7 +4,7 @@
     <form method="post" action="">
       <select name="coursename">
         <?php
-          $con = mysqli_connect("140.136.150.68:33066","root","880323","eric");
+          $con = mysqli_connect("140.136.150.68:33066","coursematch","","eric");
           if (!$con){
             die('Could not connect: ' . mysql_error());
           }

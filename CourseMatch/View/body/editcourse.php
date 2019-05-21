@@ -102,7 +102,7 @@
 
           $sql = "SELECT * from `Coursename` WHERE `course`=$course";
           $result = mysqli_query($conn, $sql);
-          if(mysqli_num_rows($reslut) === 0)
+          if(!$result)
           {
             $sql = "INSERT INTO `Coursename`(`course`, `date`, `start_time`, `end_time`) VALUES('$course', $date, '$start_time', '$end_time')";
             mysqli_query($conn, $sql);
@@ -112,12 +112,20 @@
 
           $sql = "INSERT INTO `$course`(`user_name`) VALUES('$name')";
           mysqli_query($conn, $sql);
+
+
         }
         if($_POST['chk'] == "delete")
         {
           $course = $_POST['cs'];
           $sql = "DELETE From `$name` WHERE `course` = '$course'";
           mysqli_query($con, $sql);
+
+          echo $course;
+          echo $username;
+
+          $sql = "DELETE FROM `$course` WHERE `user_name` = '$name'";
+          mysqli_query($conn, $sql);
         }
 
         header("refresh:0;url=editcourse");

@@ -5,8 +5,15 @@
       die('Could not connect: ' . mysql_error());
     }
     mysqli_query($con,"SET CHARACTER SET UTF8");
+
+    $conn = mysqli_connect("140.136.150.68:33066","coursematch","","Course");
+    if (!$conn)
+    {
+      die('Could not connect: ' . mysql_error());
+    }
+    mysqli_query($conn,"SET CHARACTER SET UTF8");
  ?>
-<div class=personalfile style="width:275px; height:100%;border-right:3px solid black; margin-bottom:20px; margin-left:-300px; float:left;">
+<div class=personalfile style="width:270px; height:100%;border-right:3px solid black; margin-bottom:20px; margin-left:-300px; margin-right:20px; float:left;">
   <div name=photo style="margin-top:20px;">
     <img src='logo-person-png.png' style="size:20px;">
   </div>
@@ -28,8 +35,8 @@
   </div>
 </div>
 
-<div style="float:left; border-right:3px solid black; margin-bottom:20px;">
-  <div style="margin-left:20px; margin-top:20px; margin-right:6a0px">
+<div style=" width:800px; float:left; border-right:3px solid black; margin-bottom:20px;">
+  <div style="margin-left:20px; margin-top:20px; margin-right:60px">
     <table border=1 width=600 align="center" width=600px>
       <tr>
         <td></td><td>星期一</td><td>星期二</td><td>星期三</td><td>星期四</td><td>星期五</td><td>星期六</td>
@@ -39,7 +46,7 @@
 
         for($i = 1; $i <= 9; $i++)
         {
-          $out .= "<tr><td>";
+          $out .= "<tr><td width=150px>";
 
           switch($i)
           {
@@ -91,13 +98,15 @@
           for($j = 1; $j <= 6; $j++)
           {
 
-             $sql = "SELECT `course` from `$name` where `date` = $j && (`start_time` <= '$s_t' && `end_time` >= '$s_t')";
-             $out .= "<td>";
+             $sql = "SELECT `course`,`start_time` from `$name` where `date` = $j && (`start_time` <= '$s_t' && `end_time` >= '$s_t')";
+             $out .= "<td width=100px>";
              $result = mysqli_query($con, $sql);
              if($result)
              {
+
                $row=mysqli_fetch_row($result);
-               $out .= $row[0];
+               if($row[0] != '')
+                $out .= "<form method=post><input type=hidden name=course_name value=".$row[0]."><input type=submit value=".$row[0]."></form>";
              }
 
              $out .= "</td>";
@@ -108,39 +117,6 @@
         echo $out;
        ?>
 
-
-       <!--
-      <tr>
-        <td>8:10 ~ 9:00</td><td></td><td></td><td></td><td></td><td></td><td></td>
-      </tr>
-      <tr>
-        <td>9:10 ~ 10:00</td><td></td><td></td><td></td><td></td><td></td><td></td>
-      </tr>
-      <tr>
-        <td>10:10 ~ 11:00</td><td></td><td></td><td></td><td></td><td></td><td></td>
-      </tr>
-      <tr>
-        <td>11:10 ~ 12:00</td><td></td><td></td><td></td><td></td><td></td><td></td>
-      </tr>
-      <tr>
-        <td>午休</td><td></td><td></td><td></td><td></td><td></td><td></td>
-      </tr>
-      <tr>
-        <td>1:40 ~ 2:30</td><td></td><td></td><td></td><td></td><td></td><td></td>
-      </tr>
-      <tr>
-        <td>2:40 ~ 3:30</td><td></td><td></td><td></td><td></td><td></td><td></td>
-      </tr>
-      <tr>
-        <td>3:40 ~ 4:30</td><td></td><td></td><td></td><td></td><td></td><td></td>
-      </tr>
-      <tr>
-        <td>4:40 ~ 5:30</td><td></td><td></td><td></td><td></td><td></td><td></td>
-      </tr>
-      <tr>
-        <td>5:40 ~ 6:30</td><td></td><td></td><td></td><td></td><td></td><td></td>
-      </tr>
-    -->
     </table>
   </div>
 
@@ -214,6 +190,23 @@
   -->
 </div>
 
-<div style="width:250px; height:100%;float:left;">
-  <p>test</p>
+<div style="width:250px; height:100%;float:left; margin-left:20px;">
+  <?php
+    if($_POST)
+    {
+      $course_name = $_POST['course_name'];
+      echo "<h4>".$course_name."跟你同一堂的</h4>";
+
+      $sql = "SELECT `user_name` from `$course_name`";
+
+      $result = mysqli_query($conn, $sql);
+
+      if($result)
+      {
+        while($row = mysqli_fetch_row($result))
+          echo $row[0]."<BR>";
+      }
+
+    }
+   ?>
 </div>

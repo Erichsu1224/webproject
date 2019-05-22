@@ -100,8 +100,9 @@
           $sql = "INSERT INTO `$name`(`course`, `date`, `start_time`, `end_time`) VALUES('$course', $date, '$start_time', '$end_time')";
           mysqli_query($con, $sql);
 
-          $sql = "SELECT * from `Coursename` WHERE `course`=$course";
+          $sql = "SELECT * from `Coursename` WHERE `course`= '$course'";
           $result = mysqli_query($conn, $sql);
+
           if(!$result)
           {
             $sql = "INSERT INTO `Coursename`(`course`, `date`, `start_time`, `end_time`) VALUES('$course', $date, '$start_time', '$end_time')";
@@ -120,9 +121,6 @@
           $course = $_POST['cs'];
           $sql = "DELETE From `$name` WHERE `course` = '$course'";
           mysqli_query($con, $sql);
-
-          echo $course;
-          echo $username;
 
           $sql = "DELETE FROM `$course` WHERE `user_name` = '$name'";
           mysqli_query($conn, $sql);

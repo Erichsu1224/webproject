@@ -8,10 +8,11 @@
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body topmargin="0" leftmargin="0" style="background-color:#F2FFF2;">
-  <div class= "header" style="width:100%; height:80px; background-color:green;">
-    <div class= "title" style="font-size:50px; height:200px;float:left;">
+  <div class= "header" style="width:100%; height:80px; background-color:#008844;">
+    <div class= "title" style="font-size:50px; height:200px;float:left;margin-top:10px">
         <a href= "index.php" style=" text-decoration:none; color:white; "><b style="margin-left: 20px;">CourseMatch</b></a>
     </div>
+
 
 
   <?php

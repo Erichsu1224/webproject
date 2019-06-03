@@ -35,7 +35,7 @@
   </div>
 </div>
 
-<div style=" width:800px; float:left; border-right:3px solid black; margin-bottom:20px;">
+<div style=" width:800px; float:left; margin-bottom:20px;">
   <div style="margin-left:20px; margin-top:20px; margin-right:60px">
     <table border=1 width=600 align="center" width=600px>
       <tr>
@@ -44,7 +44,7 @@
       <?php
         $out = "";
 
-        for($i = 1; $i <= 9; $i++)
+        for($i = 1; $i <= 10; $i++)
         {
           $out .= "<tr><td width=150px>";
 
@@ -69,26 +69,31 @@
               break;
 
             case 5:
+              $out .= "12:10 ~ 13:10";
+              $s_t = '12:10';
+              break;
+
+            case 6:
               $out .= "13:40 ~ 14:30";
               $s_t = '13:40';
               break;
 
-            case 6:
+            case 7:
               $out .= "14:40 ~ 15:30";
               $s_t = '14:40';
               break;
 
-            case 7:
+            case 8:
               $out .= "15:40 ~ 16:30";
               $s_t = '15:40';
               break;
 
-            case 8:
+            case 9:
               $out .= "16:40 ~ 17:30";
               $s_t = '16:40';
               break;
 
-            case 9:
+            case 10:
               $out .= "17:40 ~ 18:30";
               $s_t = '17:40';
               break;
@@ -204,7 +209,13 @@
       if($result)
       {
         while($row = mysqli_fetch_row($result))
+        {
+          if($result === $name)
+          {
+            continue;
+          }
           echo $row[0]."<BR>";
+        }
       }
 
     }

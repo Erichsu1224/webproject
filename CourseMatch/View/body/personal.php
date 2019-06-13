@@ -13,7 +13,7 @@
     }
     mysqli_query($conn,"SET CHARACTER SET UTF8");
  ?>
-<div class=personalfile style="width:270px; height:100%;border-right:3px solid black; margin-bottom:20px; margin-left:-300px; margin-right:20px; float:left;">
+<div class=personalfile style="width:270px; height:100%; margin-bottom:20px; margin-left:-300px; margin-right:20px; float:left;">
   <div name=photo style="margin-top:20px;">
     <img src='logo-person-png.png' style="size:20px;">
   </div>
@@ -125,7 +125,7 @@
     </table>
   </div>
 
-  <div style="margin-top:20px; ">
+  <div style="margin-top:20px; margin-left: 80px;">
     <a href="editcourse">修改課表</a>
   </div>
 
